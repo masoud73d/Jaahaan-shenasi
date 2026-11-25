@@ -100,7 +100,7 @@ a{color:#205f3d!important}
 <div class="wrap">
 <header>
  <div class="brand"><div class="brandIcon">🌍</div><div><h1>دانشنامه جهان‌شناسی</h1><p>بانک اطلاعات کشورها و قلمروها · مستقل از اینترنت</p></div></div>
- <div class="topActions"><button class="btn" id="aboutBtn">درباره من</button><button class="btn primary" id="exportBtn">خروجی اطلاعات</button></div>
+ <div class="topActions"><button class="btn" id="aboutBtn">درباره من</button></div>
 </header>
 <div class="stats">
  <div class="stat"><small>کشورها و قلمروهای دارای کد ISO</small><strong id="totalStat">249</strong></div>
@@ -331,7 +331,7 @@ $('search').addEventListener('input',rerender);$('region').addEventListener('cha
 $('clearBtn').addEventListener('click',()=>{$('search').value='';$('region').value='';$('sort').value='fa';letter='';document.querySelectorAll('.alpha').forEach(x=>x.classList.toggle('active',!x.dataset.letter));rerender();});
 $('alphabet').addEventListener('click',e=>{const b=e.target.closest('[data-letter]');if(!b)return;letter=b.dataset.letter;document.querySelectorAll('.alpha').forEach(x=>x.classList.toggle('active',x===b));rerender();});
 $('aboutBtn').addEventListener('click',()=>$('aboutModal').classList.add('show'));$('closeAbout').addEventListener('click',()=>$('aboutModal').classList.remove('show'));$('aboutModal').addEventListener('click',e=>{if(e.target.id==='aboutModal')$('aboutModal').classList.remove('show');});
-$('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(countries.map(({searchText,...c})=>c),null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='world-encyclopedia-offline-data.json';a.click();URL.revokeObjectURL(url);});
+
 $('totalStat').textContent=fmt(countries.length);renderList();renderDetail(selected);
 </script>
 </body>
